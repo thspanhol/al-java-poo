@@ -1,3 +1,4 @@
+package etapa1;
 
 public class Main {
     public static void main(String[] args) {
@@ -52,7 +53,6 @@ public class Main {
         System.out.println("Total desconto: %.2f".formatted(totalDesconto));
         double novoValor = precoOriginal - totalDesconto;
         System.out.println("Novo preço: %.2f".formatted(novoValor));
-
 
     }
 }
