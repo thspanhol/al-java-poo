@@ -2,10 +2,8 @@ package etapa3;
 
 import etapa2.Musica;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
@@ -31,6 +29,7 @@ public class Main {
         System.out.println("A primeira música da lista é a " + listMusicas.get(0).getTitulo());
         System.out.println(listMusicas);
 
+        // Sintaxes diferentes de for
         //for (var musica: listMusicas) {
         //    System.out.println(musica);
         //}
@@ -44,5 +43,87 @@ public class Main {
         listMusicas.sort(Comparator.comparing(Musica::getAnoLancamento));
         System.out.println(listMusicas);
 
+//        CartaoDeCredito meuCartao = new CartaoDeCredito();
+//        List<String> comprasFeitas = new ArrayList<>();
+//        meuCartao.setComprasFeitas(comprasFeitas);
+//        Scanner leitura = new Scanner(System.in);
+//
+//        System.out.println("Informe o saldo do seu cartão:");
+//        meuCartao.setSaldo(leitura.nextDouble());
+//
+//        int encerrarApp = 1;
+//        while (encerrarApp == 1) {
+//            System.out.println("Digite a descrição da compra:");
+//            String descricaoCompra = leitura.next();
+//            System.out.println("Digite o valor da compra:");
+//            double valorCompra = leitura.nextDouble();
+//
+//            if (valorCompra <= meuCartao.getSaldo()) {
+//                meuCartao.setSaldo(meuCartao.getSaldo() - valorCompra);
+//                meuCartao.addCompra(descricaoCompra + " - " + valorCompra);
+//                System.out.println("Compra realizada com sucesso!");
+//                System.out.println("Digite 0 para sair ou 1 para continuar.");
+//                encerrarApp = leitura.nextInt();
+//            } else {
+//                System.out.println("Você não tem saldo para realizar essa compra.");
+//                encerrarApp = 0;
+//            }
+//        }
+//
+//        Stream<String> comprasOrdenadas = comprasFeitas.stream()
+//                .sorted((c1, c2) -> {
+//                    var index1 = c1.indexOf("-");
+//                    var index2 = c2.indexOf("-");
+//                    return Double.compare(Double.parseDouble(c1.substring(index1 +2)), Double.parseDouble(c2.substring(index2 +2)));
+//                });
+//
+//        System.out.println("Compras encerradas.");
+//        System.out.println("------------------------------");
+//        System.out.println("Histórico de compras:");
+//        comprasOrdenadas.forEach(c -> System.out.println(c));
+//        System.out.println("------------------------------");
+//        System.out.println("Seu saldo atual é: " + meuCartao.getSaldo());
+
+        CartaoDeCreditoNovo meuCartao = new CartaoDeCreditoNovo();
+        List<Compra> comprasFeitas = new ArrayList<>();
+        meuCartao.setComprasFeitas(comprasFeitas);
+        Scanner leitura = new Scanner(System.in);
+
+        System.out.println("Informe o saldo do seu cartão:");
+        meuCartao.setSaldo(leitura.nextDouble());
+
+        int encerrarApp = 1;
+        while (encerrarApp == 1) {
+            System.out.println("Digite a descrição da compra:");
+            String descricaoCompra = leitura.next();
+            System.out.println("Digite o valor da compra:");
+            double valorCompra = leitura.nextDouble();
+
+            if (valorCompra <= meuCartao.getSaldo()) {
+                meuCartao.setSaldo(meuCartao.getSaldo() - valorCompra);
+                meuCartao.addCompra(new Compra(descricaoCompra, valorCompra));
+                System.out.println("Compra realizada com sucesso!");
+                System.out.println("Digite 0 para sair ou 1 para continuar.");
+                encerrarApp = leitura.nextInt();
+            } else {
+                System.out.println("Você não tem saldo para realizar essa compra.");
+                encerrarApp = 0;
+            }
+        }
+
+        System.out.println("Compras encerradas.");
+        System.out.println("------------------------------");
+        System.out.println("Histórico de compras:");
+
+        // ArrayList ordenado pelo Comparator e apresentado o toString de Compra reescrito -------
+        //meuCartao.getComprasFeitas().sort(Comparator.comparing(Compra::getValor));
+        //meuCartao.getComprasFeitas().forEach(System.out::println);
+
+        // ArrayList ordenado pela classe Collections após implementar a interface Comparable na classe Compra -------
+        Collections.sort(meuCartao.getComprasFeitas());
+        meuCartao.getComprasFeitas().forEach(System.out::println);
+
+        System.out.println("------------------------------");
+        System.out.println("Seu saldo atual é: " + meuCartao.getSaldo());
     }
 }
