@@ -6,10 +6,12 @@ public class Main {
 
         if (u.getAutenticacao() instanceof String) {
             System.out.println("Valida usuário com a String token");
+            System.out.println(u.getAutenticacao());
         };
 
         if (u.getAutenticacao() instanceof Integer) {
             System.out.println("Valida usuário com o número id");
+            System.out.println(u.getAutenticacao());
         };
     }
 

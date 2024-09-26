@@ -1,6 +1,6 @@
 package etapa2;
 
-public class Musica {
+public class Musica implements Comparable<Musica> {
 
     // Crie uma classe Musica com atributos titulo, artista, anoLancamento, avaliacao e numAvaliacoes, e métodos para exibir a ficha técnica, avaliar a música e calcular a média de avaliações.
 
@@ -9,6 +9,20 @@ public class Musica {
     private int anoLancamento;
     private int avaliacao;
     private int numAvaliacoes;
+
+    public Musica(String titulo, String artista, int anoLancamento) {
+        this.titulo = titulo;
+        this.artista = artista;
+        this.anoLancamento = anoLancamento;
+    }
+
+    public int getAnoLancamento() {
+        return anoLancamento;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
@@ -36,4 +50,13 @@ public class Musica {
         return media;
     }
 
+    @Override
+    public String toString() {
+        return titulo + " (" + artista + "/" + anoLancamento + ")";
+    }
+
+    @Override
+    public int compareTo(Musica o) {
+        return this.getTitulo().compareTo(o.getTitulo());
+    }
 }
