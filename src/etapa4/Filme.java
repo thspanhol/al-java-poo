@@ -13,8 +13,19 @@ public class Filme {
         this.diretor = meuFilmeOmdb.director();
     }
 
+    // Comentado para persistir os dados no formato json
+//    @Override
+//    public String toString() {
+//        return "Filme: " + nome + ", Lancamento: " + anoLancamento + ", Diretor: " + diretor;
+//    }
+
+
     @Override
     public String toString() {
-        return "Filme: " + nome + ", Lancamento: " + anoLancamento + ", Diretor: " + diretor;
+        return "{" +
+                "nome='" + nome + '\'' +
+                ", anoLancamento=" + anoLancamento +
+                ", diretor='" + diretor + '\'' +
+                '}';
     }
 }

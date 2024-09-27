@@ -1,0 +1,12 @@
+[
+  {
+    "Nome": "Mortal Kombat",
+    "AnoLancamento": 2021,
+    "Diretor": "Simon McQuoid"
+  },
+  {
+    "Nome": "The Dark Knight",
+    "AnoLancamento": 2008,
+    "Diretor": "Christopher Nolan"
+  }
+]
